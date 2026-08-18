@@ -1,0 +1,11 @@
+{
+  "name": "akinator",
+  "version": "1.0.0",
+  "description": "Zero-cognitive-load mind-reading decision engine for AI coding assistants. Deduces user intent via deep context scan, 2-click Typeform triage, and immediate execution.",
+  "author": {
+    "name": "obeskay",
+    "url": "https://github.com/obeskay"
+  },
+  "homepage": "https://github.com/obeskay/akinator",
+  "license": "MIT"
+}
