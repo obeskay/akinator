@@ -2,12 +2,12 @@
 
 <img src="assets/banner-es.jpg" alt="akinator — Motor de lectura de mente y cero carga cognitiva para asistentes de código" width="100%">
 
-Deja de pelear con la parálisis del prompt. Cuando estés cansado, saturado o simplemente tengas cero ganas de escribir ("hueva"), Akinator lee el contexto de tu repositorio, ejecuta un triaje estilo Typeform en 2 clics y empieza a construir de inmediato.
+Deja de pelear con la parálisis del prompt. Cuando estés cansado, saturado o no tengas ganas de escribir ("hueva"), Akinator lee el contexto de tu repositorio, hace preguntas de un solo toque, convierte ideas vagas en specs completos vía negativa, y ejecuta de inmediato.
 
-[![License: MIT](https://img.shields.io/badge/Licencia-MIT-black.svg)](LICENSE)
+[![Licencia: MIT](https://img.shields.io/badge/Licencia-MIT-black.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-black)](https://code.claude.com/docs)
 [![Antigravity](https://img.shields.io/badge/Antigravity-Skill-black)](https://antigravity.google)
-[![Estilo Typeform](https://img.shields.io/badge/UI-Est%C3%A9tica%20Typeform-black)](#-la-experiencia-typeform)
+[![Versión 2.0.0](https://img.shields.io/badge/Versi%C3%B3n-2.0.0-black)](#)
 
 [English](README.md) · Español · [中文](README.zh-CN.md)
 
@@ -17,104 +17,84 @@ Deja de pelear con la parálisis del prompt. Cuando estés cansado, saturado o s
 
 ## El problema
 
-Todo desarrollador conoce ese estado de **fatiga cognitiva extrema** — coloquialmente conocido como *"tener hueva"*: te sientas frente a la terminal tras horas de context switching, sabes que hay trabajo pendiente, pero redactar un prompt de 500 palabras explicando el estado del código resulta agotador.
+Todo desarrollador conoce ese estado de **fatiga cognitiva** — coloquialmente conocido como *"tener hueva"*: te sientas frente a la terminal tras horas de context switching, sabes que hay trabajo pendiente, pero redactar un prompt de 500 palabras explicando el estado del proyecto se siente imposible.
 
-Cuando le das a un asistente de IA genérico un comando vago como *"¿qué hago ahora?"* o *"continúa"*, suelen ocurrir dos desastres:
-1. **La trampa del interrogatorio:** El modelo responde con una lista abrumadora de 10 puntos y te hace 5 preguntas abiertas.
-2. **La alucinación desorientada:** El modelo se engancha con archivos temporales, logs en caché o dependencias y se pone a modificar código irrelevante.
+Cuando le das a un asistente de IA estándar un comando vago como *"¿qué hago ahora?"* o *"continúa"*, suelen ocurrir dos desastres:
+1. **La trampa del interrogatorio:** El modelo responde con una lista abrumadora de 10 puntos y 5 preguntas abiertas.
+2. **La alucinación desorientada:** El modelo se engancha con archivos temporales o logs en caché y empieza a editar código irrelevante.
 
-**Akinator resuelve esto cambiando por completo la interacción.**
-
----
-
-## Cómo funciona
-
-Akinator convierte la deducción de intenciones en un flujo limpio y sin fricción:
-
-- **Pre-escaneo profundo de contexto:** Lee `git status`, los últimos commits (`git log -n 5`), diffs activos y notas de seguimiento (`TODO.md`, `ROADMAP.md`, `ESTADO.md`).
-- **Filtro estricto de ruido:** Ignora automáticamente basura temporal (`.cache`, `tmp`, `node_modules`, `dist`, `build`, lockfiles) antes de analizar qué hacer.
-- **Triaje progresivo estilo Typeform en 2 clics:** Sintetiza el estado en tarjetas visuales limpias y espaciadas (`[ 1 ]`, `[ 2 ]`, `[ 3 ]`). Solo respondes con un solo número.
-- **Ejecución autónoma inmediata:** Al recibir tu opción (`1`, `2` o `3`), Akinator se salta rodeos y preámbulos conversacionales e inicia el trabajo técnico de inmediato.
+**Akinator resuelve esto mediante dos modos de profundidad: Siguiente Paso y Modo Spec.**
 
 ---
 
-## 🎨 La experiencia Typeform
+## Dos modos de operación
 
-En lugar de textos amontonados y saturados, Akinator entrega tarjetas con alto whitespace diseñadas para eliminar la carga mental:
+### 1. Siguiente Paso (Dentro de un repositorio existente)
+Para cuando ya hay código o tareas en progreso:
+- **Escaneo silencioso (<1 min):** Lee `git status -s`, `git log -5`, diffs sin commitear y archivos de pendientes (`TODO.md`, `ROADMAP.md`). Descarta automáticamente ruido de build, dependencias y caches.
+- **Hipótesis concretas sin rodeos:** Si el contexto apunta a algo claro (un test que truena, trabajo a medias), se salta las preguntas y ofrece 3 opciones concretas con archivo y línea, la más probable primero, más "ninguna".
+- **Pregunta de energía si el repo está limpio:** Si no hay nada a medias, hace una sola ronda de dos preguntas fáciles:
+  - *"¿Con cuánta pila vienes?"* (poca / media / mucha → fix de 15 min / feature chica / algo profundo).
+  - *"¿Qué se te antoja?"* (algo que se vea / algo por dentro / ordenar y limpiar).
+- **Ejecución inmediata:** Eliges una opción y Akinator empieza a programar al instante, sin pedir confirmaciones ni rodeos.
 
-```markdown
-✨  **AKINATOR**  •  Pregunta 1 de 2
-
-
-### ¿En qué área trabajaremos hoy?
-
----
-
-
-   [ 1 ]   Trabajo de Feature Principal
-           Implementar endpoints de API pendientes, flujos de usuario o componentes.
-
-
-
-
-   [ 2 ]   Refactorización y Calidad
-           Limpiar deuda técnica, mejorar tipos de TypeScript o simplificar módulos complejos.
-
-
-
-
-   [ 3 ]   Testing, Infraestructura y CI/CD
-           Corregir tests rotos, verificar pipelines de despliegue u optimizar builds.
-
+### 2. Modo Spec (Para una idea vaga desde cero)
+Para cuando quieres construir algo nuevo pero no sabes exactamente qué:
+- **Vía negativa primero:** Pregunta qué tachar o descartar antes de definir qué meter. ¿Qué te chocaría más? ¿Qué NO debe llevar?
+- **Tarjetas de un toque con letras corridas:** Las opciones usan letras continuas en toda la tarjeta (`a–c`, `d–f`, `g–i`, `j–l`), permitiendo responder en una sola línea (ej. `b f i j`) sin ambigüedad posicional.
+- **Metáforas que se traducen a decisiones:** *"Si fuera comida: taco de esquina, comida corrida o menú degustación"*. Cada metáfora se traduce directamente a reglas de diseño (ej. taco de esquina = rápido, sin adornos, directo a producción).
+- **Reflejo de terapeuta:** Tras cada ronda, resume lo que entendió en una sola línea con barra de progreso para que corrijas si algo se desvió.
+- **Spec entregado con la adivinanza:** Entrega la hipótesis final acompañada de una especificación ejecutable completa en `specs/<slug>.md`:
+  - **Lo que sí** y **Lo que NO** (descartes explícitos)
+  - **Cómo se siente** (tono, densidad y ritmo)
+  - **Criterios de aceptación observables** (`[ ]`)
+  - **Riesgos y supuestos**
+  - **Primer paso concreto**
 
 ---
 
-👉 *Responde solo `1`, `2` o `3`*
+## 🎨 La experiencia de un toque
+
+Las preguntas llegan en tarjetas limpias que se responden con letras en una sola línea:
+
+```
+akinator ▪ ronda 1 de 2
+
+1. ¿Quién lo va a usar más?     a) tú   b) tus clientes   c) tu equipo
+2. Amaneces y ya existe. ¿Qué notas primero?
+   d) ya no pierdes la tarde en eso   e) te llegan más pedidos   f) todos saben qué toca
+3. ¿Qué te chocaría más?        g) que sea lento   h) que se vea feo   i) que sea complicado
+4. Si fuera comida…             j) taco de esquina   k) comida corrida   l) menú degustación
+
+Contesta con letras en una línea, p. ej. «b f i j» · ok = lo que yo elegiría · ? = me da igual · ya = adivina
+Sin respuestas malas; «ya» para cortar cuando quieras.
 ```
 
-Tras tu respuesta de un solo carácter (ej. `1`), Akinator presenta hipótesis concretas:
+Akinator refleja en una línea lo entendido:
 
-```markdown
-✨  **AKINATOR**  •  Pregunta 2 de 2
+```
+▰▰▱▱ Va: para tu equipo, que se use desde el cel, rápido y sin adornos (taco de esquina), sin cuentas.
+```
 
+Y revela la adivinanza final junto con el spec:
 
-### Con base en tus diffs recientes, esto es lo que toca resolver:
+```
+> Creo que estás pensando en… TeamRun: una tarjeta web ligera para celular fijada en tu chat grupal. Muestra la ruta del sábado, la hora de salida y confirmación de asistencia con primer nombre para el café posterior. Sin cuentas, sin Strava, sin cobros. El spec ya está en specs/team-run.md.
 
----
-
-
-   [ 1 ]   Completar Middleware de Autenticación
-           Finalizar el handler de verificación JWT iniciado en `src/auth/guard.ts`.
-
-
-
-
-   [ 2 ]   Corregir Validación de Firma en Webhook
-           Resolver la discrepancia de firmas en el endpoint de Stripe.
-
-
-
-
-   [ 3 ]   Ejecutar Suite de Migraciones e Integración
-           Aplicar cambios al schema de base de datos y validar contra los tests.
-
-
----
-
-👉 *Responde `1`, `2` o `3` para arrancar de inmediato*
+a) Sí, arranca · b) Sí, solo el spec · c) Casi · d) Frío
 ```
 
 ---
 
 ## Comparativa
 
-| Característica | Akinator | Asistente Estándar | Prompting Manual |
+| Dimensión | Akinator v2 | Asistente Estándar | Prompting Manual |
 |---|---|---|---|
-| **Esfuerzo cognitivo** | **Cero (2 teclas)** | Alto (Leer muros de texto) | Máximo (Escribir todo el contexto) |
-| **Fricción de respuesta** | `1`, `2` o `3` | Párrafos de ida y vuelta | Redactar prompts largos |
-| **Filtro de ruido** | Elimina artefactos temporales/cache | Se desvía con logs y caches | Selección manual |
-| **Gatillo de ejecución** | **Inmediato tras el clic 2** | Pide confirmaciones extra | Requiere prompts de seguimiento |
-| **Formato visual** | Tarjetas limpias estilo Typeform | Listas saturadas | Texto plano sin formato |
+| **Carga cognitiva** | **Cero (una línea de letras o un clic)** | Alta (leer parrafadas y preguntas abiertas) | Máxima (redactar 500 palabras) |
+| **Fricción de respuesta** | Letras simples (`a d g j` u `ok`) | Múltiples párrafos de ida y vuelta | Redacción exhaustiva |
+| **Desambiguación** | Letras corridas (`a–c`, `d–f`...) | Conjeturas posicionales propensas a error | Reiteración manual |
+| **Calidad de entrega** | Spec ejecutable con descartes y riesgos | Ideas sueltas y planes a medias | Dependiente del prompt inicial |
+| **Gatillo de ejecución** | **Inmediato al confirmar** | Requiere rondas adicionales de validación | Requiere prompts de seguimiento |
 
 ---
 
@@ -134,30 +114,37 @@ Tras tu respuesta de un solo carácter (ej. `1`), Akinator presenta hipótesis c
 
 ---
 
-### Método 2: Instalación directa de Skill
+### Método 2: Instalación directa de Skill (Claude Code, Antigravity, Codex)
 
-Copia o clona `skills/akinator/` en tu directorio de skills:
+Dado que la skill vive en `skills/akinator/` dentro del repositorio, clona el proyecto en tu carpeta de herramientas y crea el symlink correspondiente:
 
-**Para Claude Code:**
 ```bash
-git clone https://github.com/obeskay/akinator.git ~/.claude/skills/akinator
+# 1. Clonar el repositorio
+git clone https://github.com/obeskay/akinator.git ~/tools/akinator
+
+# 2. Crear symlink en tu directorio de skills:
+# Para Claude Code:
+mkdir -p ~/.claude/skills && ln -s ~/tools/akinator/skills/akinator ~/.claude/skills/akinator
+
+# Para Antigravity (AGY):
+mkdir -p ~/.gemini/config/skills && ln -s ~/tools/akinator/skills/akinator ~/.gemini/config/skills/akinator
+
+# Para Codex / Entornos de agentes:
+mkdir -p .agents/skills && cp -r ~/tools/akinator/skills/akinator .agents/skills/
 ```
 
-**Para Antigravity (AGY):**
+**Comando rápido en una sola línea (Copia directa):**
 ```bash
-git clone https://github.com/obeskay/akinator.git ~/.gemini/config/skills/akinator
-```
-
-**Para Codex / Entornos de Agentes:**
-```bash
-mkdir -p .agents/skills && cp -r /ruta/a/akinator/skills/akinator .agents/skills/
+git clone --depth 1 https://github.com/obeskay/akinator.git /tmp/akinator && \
+  mkdir -p ~/.claude/skills && cp -r /tmp/akinator/skills/akinator ~/.claude/skills/ && \
+  rm -rf /tmp/akinator
 ```
 
 ---
 
 ## Triggers y Uso
 
-No necesitas memorizar sintaxis compleja. Simplemente escribe de forma natural cuando no tengas ganas de redactar:
+Escribe con total naturalidad cuando no tengas ganas de redactar:
 
 ```
 tengo hueva
@@ -169,55 +156,11 @@ léceme la mente
 no sé qué hacer, dime qué sigue
 ```
 ```
-estoy cansado, toma el control
+quiero hacer algo pero no sé qué, pregúntame
 ```
 ```
 /akinator
 ```
-
----
-
-## Arquitectura
-
-```
-  ┌───────────────────────────────────────────────────────────┐
-  │  Desarrollador: "tengo hueva" / "qué sigue" / "/akinator" │
-  └─────────────────────────────┬─────────────────────────────┘
-                                │
-                                ▼
-  ┌───────────────────────────────────────────────────────────┐
-  │  1. Pre-escaneo profundo de contexto                      │
-  │     • git status -s y git log -n 5                        │
-  │     • diffs activos y trabajo sin commitear               │
-  │     • TODO.md / ROADMAP.md / notas de estado              │
-  └─────────────────────────────┬─────────────────────────────┘
-                                │
-                                ▼
-  ┌───────────────────────────────────────────────────────────┐
-  │  2. Filtro estricto de ruido                              │
-  │     • Ignorar: tmp/, .cache/, node_modules/, dist/, build │
-  └─────────────────────────────┬─────────────────────────────┘
-                                │
-                                ▼
-  ┌───────────────────────────────────────────────────────────┐
-  │  3. Triaje progresivo en 2 clics (Estilo Typeform)        │
-  │     • Clic 1: Dominio Macro ([ 1 ], [ 2 ], [ 3 ])         │
-  │     • Clic 2: Hipótesis de acción concreta                │
-  └─────────────────────────────┬─────────────────────────────┘
-                                │ (Usuario responde '1', '2' o '3')
-                                ▼
-  ┌───────────────────────────────────────────────────────────┐
-  │  4. Ejecución autónoma inmediata                          │
-  │     • Cero preámbulos conversacionales                    │
-  │     • Implementación técnica completa y verificada        │
-  └───────────────────────────────────────────────────────────┘
-```
-
----
-
-## Contribuciones
-
-Son bienvenidos los Pull Requests, reportes de bugs y sugerencias de diseño. Se agradece mantener el principio fundacional: **cero carga cognitiva, fricción mínima y estética impecable.**
 
 ---
 
