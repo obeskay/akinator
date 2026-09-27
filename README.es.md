@@ -150,7 +150,7 @@ Escribe con total naturalidad cuando no tengas ganas de redactar:
 tengo hueva
 ```
 ```
-léceme la mente
+léeme la mente
 ```
 ```
 no sé qué hacer, dime qué sigue

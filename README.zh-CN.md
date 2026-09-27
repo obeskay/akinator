@@ -150,7 +150,7 @@ git clone --depth 1 https://github.com/obeskay/akinator.git /tmp/akinator && \
 tengo hueva
 ```
 ```
-léceme la mente
+léeme la mente
 ```
 ```
 接下来该做什么？

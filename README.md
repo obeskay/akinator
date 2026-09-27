@@ -150,7 +150,7 @@ Speak naturally when you don't feel like typing:
 tengo hueva
 ```
 ```
-léceme la mente
+léeme la mente
 ```
 ```
 what should I work on next?
