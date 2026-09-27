@@ -28,7 +28,7 @@ That block is a rule, not a preference. A `.` glyph changes geometry between fon
 ## Regenerating
 
 ```bash
-node assets/banner.mjs build
+node assets/banner.mjs assets/build
 ```
 
 Render at 2× with headless Chrome:
