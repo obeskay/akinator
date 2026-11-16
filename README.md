@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner-en.jpg" alt="akinator — Zero-cognitive-load mind-reading decision engine for AI assistants" width="100%">
+<img src="assets/banner-en.jpg" alt="akinator — One-tap questions for AI coding assistants when you are tired or stuck" width="100%">
 
 Stop fighting prompt paralysis. When you are tired, overwhelmed, or have zero energy to type, Akinator reads your codebase context, asks ultra-easy one-tap questions, turns fuzzy ideas into clean specs via negativa, and builds once you say go.
 

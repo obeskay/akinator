@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner-es.jpg" alt="akinator — Motor de lectura de mente y cero carga cognitiva para asistentes de código" width="100%">
+<img src="assets/banner-es.jpg" alt="akinator — Preguntas de un toque para tu asistente de código cuando estás cansado o atorado" width="100%">
 
 Deja de pelear con la parálisis del prompt. Cuando estés cansado, saturado o no tengas ganas de escribir ("hueva"), Akinator lee el contexto de tu repositorio, hace preguntas de un solo toque, convierte ideas vagas en specs completos vía negativa, y construye cuando le das luz verde.
 

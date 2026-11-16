@@ -4,7 +4,7 @@ The name is the concept. In folklore and web history, *Akinator* is the all-know
 
 For AI coding assistants (Claude Code, Antigravity, Codex), `akinator` is a mind-reading & zero-cognitive-load decision engine designed for developers experiencing cognitive fatigue, decision paralysis, or the universal feeling of *"tengo hueva"* (unwillingness to write extensive prompts).
 
-The visual identity embodies this transition from fuzzy chaos to crystalline clarity: on the right, an ethereal golden-amber telepathic crystal coalesces within cosmic energy rings on deep near-black graphite (`#08080a`).
+The visual identity is an original mascot: a small, soft, cream-colored spirit in an amber headscarf with a crescent pin, eyes closed, fingertips at its temples, a lavender question mark curling beside it. It sits on the right over deep near-black graphite (`#08080a`). It reads minds by asking, so it looks calm and friendly rather than mystical.
 
 The background (`artwork.jpg`) is generated; the type is drawn over it in HTML, never baked into the image. That keeps the wordmark pixel-identical across languages and crisp at any screen density.
 
@@ -14,14 +14,14 @@ The background (`artwork.jpg`) is generated; the type is drawn over it in HTML, 
 |---|---|---|
 | Ink | `#08080a` | Background. Near-black, never pure `#000`. |
 | Paper | `#f4f2ee` | Wordmark and primary text. Warm off-white. |
-| Cognitive Amber | `#f3a638` | The accent block dot, glowing telepathic crystal focal point. |
-| Telepathic Aura | `#7a7db8` | Cosmic energy rings and psychic frequency currents. |
+| Cognitive Amber | `#f3a638` | The accent block dot and the mascot's headscarf. |
+| Question | `#9a8fd0` | The question mark beside the mascot. |
 | Muted | `#c2bcb4` | Tagline. |
 | Faint | `#7d776f` | Monospace footnote. |
 
 ## Wordmark
 
-`akinator` set in Helvetica Neue Medium at `-0.045em` tracking, followed by a **drawn glowing square block**, never a typed period.
+`akinator` set in Helvetica Neue Medium at `-0.045em` tracking, followed by a **drawn square block** (flat, no glow), never a typed period.
 
 That block is a rule, not a preference. A `.` glyph changes geometry between font stacks, so drawing it as a dedicated element ensures identical visual weight across Latin, CJK, and mixed environments. The wordmark also pins its own font stack and never inherits the CJK stack used for body copy.
 

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner-zh.jpg" alt="akinator — 为 AI 编程助手打造的零认知负担意图推断引擎" width="100%">
+<img src="assets/banner-zh.jpg" alt="akinator — 累了或卡住时，用一键问答驱动你的 AI 编程助手" width="100%">
 
 告别提示词倦怠。当你疲惫、精力透支或完全不想长篇大论时，Akinator 会读取代码库上下文，以极简单选提问锁定意图，通过否定式提问生成清晰规范（Spec），并在你确认后动手构建。
 
