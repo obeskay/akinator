@@ -90,14 +90,14 @@ People who can't choose usually already lean one way; the questions only make th
 
 1. **Set the options.** Name them back in one line, in their words, at most three. Four or more: the first question is a strike list down to two or three. None named ("ayúdame a decidir" and nothing else): infer two or three from the context and offer them as the first question, plus `otra`. Only one ("¿lo hago o no?"): the other option is not doing it, or not now.
 2. **Read before asking.** For technical options (two libraries, two approaches), read the code, CI and docs first, and put what you found in the card's first line ("vi 2 dependencias nativas y CI en node 20"). If the evidence settles it, skip the questions and recommend with the evidence. Never ask what the context answers, reversibility included: a branch is easy to undo, a sent message or a migrated database is not.
-3. **One round**, the card headed "ronda 1" with no total, the coin flip first plus one or two of the others:
+3. **One round**, the card headed "ronda 1" with no total and the same rules as any card (letters run on across questions, never restart), the coin flip first plus one or two of the others:
    - **Coin flip**: "Lo echamos a volado y sale A. ¿Qué sientes?" alivio / decepción / me da igual. With three options, flip for the one you think they lean toward and make the strike question the second one.
    - **Strike one**: "Si tuvieras que tachar una ya, ¿cuál?"
    - **Regret**: "En un mes, ¿de cuál te arrepentirías más de no haberla elegido?"
    - **Reversibility**, only when the context can't tell: "Si sale mal, ¿se deshace?" fácil / con trabajo / no hay vuelta.
    - **What weighs most**: two criteria taken from where the options really differ (for a shop: "que venda más" / "que no te quite las tardes"), never generic ones.
 4. **Weigh in this order**: the coin-flip reaction, then regret, then the strike. Reversibility and criteria only break ties. `ok` takes the option you would pick; `?` counts as "me da igual". If everything came back "me da igual", nothing weighs on them: pick the option that's cheapest to start and easiest to undo, and say so ("Nada te pesa: va A, que sale más barato probar").
-5. **Recommend in one line**, with the reason taken from their answers, not from your own pros and cons: "Va B: te dio alivio que saliera y te arrepentirías de no elegirla." Options: `Dale` · `No, ¿cuál?` (or `No, la otra` with two options) · `Ninguna me late`.
+5. **Recommend in one line**, with the reason taken from their answers, not from your own pros and cons: "Va B: te dio alivio que saliera y te arrepentirías de no elegirla." Always offer all three: `Dale` · `No, la otra` (`No, ¿cuál?` with three options) · `Ninguna me late`.
 6. **Then act.**
    - `Dale` on something concrete you can do here: start, and verify as usual. If it's large (a migration, a rewrite), do the smallest step that's easy to undo first, on its own branch, and say what comes next.
    - `Dale` on something big or fuzzy ("abrir la tienda en línea"): go straight to spec depth, round 1, skipping what this round already answered.
