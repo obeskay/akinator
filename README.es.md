@@ -7,7 +7,7 @@ Deja de pelear con la parálisis del prompt. Cuando estés cansado, saturado o n
 [![Licencia: MIT](https://img.shields.io/badge/Licencia-MIT-black.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-black)](https://code.claude.com/docs)
 [![Antigravity](https://img.shields.io/badge/Antigravity-Skill-black)](https://antigravity.google)
-[![Versión 2.0.0](https://img.shields.io/badge/Versi%C3%B3n-2.0.0-black)](#)
+[![Versión 2.1.0](https://img.shields.io/badge/Versi%C3%B3n-2.1.0-black)](#)
 
 [English](README.md) · Español · [中文](README.zh-CN.md)
 
@@ -29,11 +29,11 @@ Cuando le das a un asistente de IA estándar un comando vago como *"¿qué hago 
 1. **La trampa del interrogatorio:** El modelo responde con una lista abrumadora de 10 puntos y 5 preguntas abiertas.
 2. **La alucinación desorientada:** El modelo se engancha con archivos temporales o logs en caché y empieza a editar código irrelevante.
 
-**Akinator resuelve esto mediante dos modos de profundidad: Siguiente Paso y Modo Spec.**
+**Akinator resuelve esto con tres profundidades: Siguiente Paso, Decidir y Spec.**
 
 ---
 
-## Dos modos de operación
+## Tres modos de operación
 
 ### 1. Siguiente Paso (Dentro de un repositorio existente)
 Para cuando ya hay código o tareas en progreso:
@@ -44,7 +44,14 @@ Para cuando ya hay código o tareas en progreso:
   - *"¿Qué se te antoja?"* (algo que se vea / algo por dentro / ordenar y limpiar).
 - **Ejecución inmediata:** Eliges una opción y Akinator empieza a programar al instante, sin pedir confirmaciones ni rodeos.
 
-### 2. Modo Spec (Para una idea vaga desde cero)
+### 2. Decidir (Cuando estás entre dos opciones)
+Cuando ya tienes dos o tres opciones y no te decides:
+- **El volado:** *"Lo echamos a volado y sale A. ¿Qué sientes?"* (alivio / decepción / me da igual). Tu reacción muestra hacia dónde ya te inclinabas.
+- **Una ronda corta:** el volado y una o dos de estas: ¿se puede deshacer?, ¿cuál tacharías ya?, ¿de cuál te arrepentirías en un mes?
+- **Recomendación con tu propia razón:** una línea, armada con tus respuestas, y luego la ejecuta; si lo elegido es grande o vago, pasa directo al Modo Spec. Con «ninguna me late», busca qué tienen las opciones que no te gusta y propone una tercera.
+- **Evidencia primero en decisiones técnicas:** entre dos librerías o dos enfoques, lee el código antes de preguntar.
+
+### 3. Modo Spec (Para una idea vaga desde cero)
 Para cuando quieres construir algo nuevo pero no sabes exactamente qué:
 - **Vía negativa primero:** Pregunta qué tachar o descartar antes de definir qué meter. ¿Qué te chocaría más? ¿Qué NO debe llevar?
 - **Tarjetas de un toque con letras corridas:** Las opciones usan letras continuas en toda la tarjeta (`a–c`, `d–f`, `g–i`, `j–l`), permitiendo responder en una sola línea (ej. `b f i j`) sin ambigüedad posicional.
@@ -157,6 +164,9 @@ tengo hueva
 ```
 ```
 léeme la mente
+```
+```
+estoy entre sacar el rediseño hoy o esperar feedback
 ```
 ```
 no sé qué hacer, dime qué sigue

@@ -7,7 +7,7 @@ Stop fighting prompt paralysis. When you are tired, overwhelmed, or have zero en
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-black)](https://code.claude.com/docs)
 [![Antigravity](https://img.shields.io/badge/Antigravity-Skill-black)](https://antigravity.google)
-[![Version 2.0.0](https://img.shields.io/badge/Version-2.0.0-black)](#)
+[![Version 2.1.0](https://img.shields.io/badge/Version-2.1.0-black)](#)
 
 English · [Español](README.es.md) · [中文](README.zh-CN.md)
 
@@ -29,11 +29,11 @@ When you give a standard AI assistant a vague prompt like *"what should I do?"* 
 1. **The Interrogation Trap:** The model responds with an overwhelming 10-point numbered list and asks you 5 open-ended questions.
 2. **The Hallucination Guess:** The model latches onto temporary files or cached logs and starts fixing irrelevant code.
 
-**Akinator solves this with two specialized depths: Next-Step Depth and Spec Depth.**
+**Akinator solves this with three depths: Next Step, Decide and Spec.**
 
 ---
 
-## Two Operating Modes
+## Three Operating Modes
 
 ### 1. Next-Step Depth (Inside a Repo)
 When you have an existing codebase or work in progress:
@@ -44,7 +44,14 @@ When you have an existing codebase or work in progress:
   - *"What are you in the mood for?"* (something visible / under the hood / clean and organize).
 - **Instant execution:** Once you tap an option, Akinator executes immediately without confirmations or preamble.
 
-### 2. Spec Depth (From a Fuzzy Idea)
+### 2. Decide Depth (Torn Between Options)
+When you already have two or three options and can't pick one:
+- **Coin-flip gut check:** *"We flip a coin and it lands on A. How do you feel?"* (relief / disappointment / don't care). Your reaction shows the lean you already had.
+- **One short round:** the coin flip plus one or two of: can it be undone (only if the code can't tell), which one would you strike right now, which one you'd regret not doing in a month.
+- **Recommendation with your own reason:** one line, built from your answers, then it acts on it; a big or fuzzy pick moves straight into Spec Depth. "Neither" makes it find what the options share that you dislike and propose a third option.
+- **Evidence first for technical choices:** for two libraries or two approaches, it reads the code before asking anything.
+
+### 3. Spec Depth (From a Fuzzy Idea)
 When you want to build something new but don't know where to start:
 - **Via Negativa First:** Asks what to discard or strike before defining what to build. What would annoy you most? What is out of scope?
 - **One-Tap Running-Letter Cards:** Questions never require open-ended text. Options use continuous letters across questions (`a–c`, `d–f`, `g–i`, `j–l`) so a reply like `b f i j` maps to one option per question.
@@ -160,6 +167,9 @@ léeme la mente
 ```
 ```
 what should I work on next?
+```
+```
+should I ship the redesign today or wait for feedback?
 ```
 ```
 i want to build something but not sure what, ask me questions

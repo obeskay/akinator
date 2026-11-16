@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "One-tap questions for AI coding assistants when you are tired or stuck",
-    "version": "2.0.0"
+    "version": "2.1.0"
   },
   "plugins": [
     {
       "name": "akinator",
       "source": "./",
-      "description": "One-tap questions for AI coding assistants when you are tired or stuck. Reads your context, then guesses the next step or turns a fuzzy idea into a buildable spec via negativa, and builds it once you say go.",
-      "version": "2.0.0",
+      "description": "One-tap questions for AI coding assistants when you are tired or stuck. Reads your context, then guesses the next step, settles a choice you are torn on, or turns a fuzzy idea into a buildable spec via negativa, and builds it once you say go.",
+      "version": "2.1.0",
       "author": {
         "name": "obeskay",
         "url": "https://github.com/obeskay"

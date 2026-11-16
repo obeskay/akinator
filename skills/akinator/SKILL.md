@@ -2,25 +2,30 @@
 name: akinator
 description: >
   Reads the user's mind with ultra-easy, one-tap questions, Akinator-style, when they are tired, stuck or vague.
-  Next-step depth: scans git/TODOs, guesses what to do now and executes on one tap. Spec depth: turns a fuzzy idea
-  into a complete, buildable spec through two or three rounds of simple, psychologist-style, via-negativa questions
-  ("¿qué NO quieres?", everyday metaphors, pre-mortems), then builds it. Use it whenever the user says "tengo hueva",
-  "no sé qué hacer", "qué sigue", "léeme la mente", "ayúdame a decidir", "tengo una idea pero no sé", "no sé qué
-  quiero", "hazme preguntas", "entrevístame", "sácame el spec", "aterriza mi idea", "what should I do", "read my
-  mind", "interview me", "help me figure out what I want", "帮我决定", "/akinator", and whenever a build request is
-  too vague to start and the user would rather answer than write.
+  Next-step depth: scans git/TODOs, guesses what to do now and executes on one tap. Decide depth: when they are torn
+  between options, a coin-flip gut check and a couple of one-tap questions, then a recommendation it acts on.
+  Spec depth: turns a fuzzy idea into a complete, buildable spec through one to three rounds of simple,
+  psychologist-style, via-negativa questions ("¿qué NO quieres?", everyday metaphors, pre-mortems), then builds it.
+  Use it whenever the user says "tengo hueva", "no sé qué hacer", "qué sigue", "léeme la mente", "ayúdame a decidir",
+  "estoy entre", "no sé cuál", "¿A o B?", "tengo una idea pero no sé", "no sé qué quiero", "hazme preguntas",
+  "entrevístame", "sácame el spec", "aterriza mi idea", "what should I do", "read my mind", "should I X or Y",
+  "interview me", "help me figure out what I want", "帮我决定", "/akinator", and whenever a build request is too vague
+  to start and the user would rather answer than write.
 ---
 
 # Akinator
 
 Tired or stuck people can't write a good prompt, but they can tell you in a split second what they *don't* want. Akinator works with that: it never asks the user to produce, only to react, one tap per question, and keeps narrowing until it can guess what's in their head. Then it acts.
 
-Two depths, same engine:
+Three depths, same engine:
 
 - **Next step**: there's work in progress and they don't know what to do now. Read the context, guess, execute. Usually zero or one question.
-- **Spec**: they have a fuzzy idea of something to build or change. Two or three rounds of easy questions, then a guess that arrives together with a complete spec, then build.
+- **Decide**: they already have two or three options and can't pick. One short round of gut checks, a recommendation, then act on it.
+- **Spec**: they have a fuzzy idea of something to build or change. One to three rounds of easy questions, then a guess that arrives together with a complete spec, then build.
 
-Pick the depth from their words and the context. If it's genuinely unclear, make it the first question: "¿Sigues algo que ya empezaste o arrancas algo nuevo?"
+Pick the depth from their words and the context. If it's genuinely unclear, make it the first question: "¿Sigues algo que ya empezaste, arrancas algo nuevo o estás entre varias opciones?"
+
+Cards, reflections and specs go out in the user's language and register. The examples here are Mexican Spanish; translate the metaphors, the shortcut words (`ok`, `?`, `ya`) and the option labels too, don't just transliterate them.
 
 **Speed is part of the kindness.** Someone out of energy staring at a spinner for minutes is exactly what this skill exists to prevent. Get each card out quickly: start from the skeletons below, keep deliberation short, and let the next round correct course. The spec is written once, with the guess, not after every round.
 
@@ -61,13 +66,15 @@ Sin respuestas malas; «ya» para cortar cuando quieras.
 
 Letters run on across the card (a–c, d–f, …), so any answer, in any order and with several picks, reads unambiguously. A strike list goes last and uses numbers: "5. Tacha lo que NO va (yo tacharía 3 y 4): 1 cuentas · 2 pagos · 3 avisos · 4 reportes".
 
+Read answers generously. "la b", "b y f", "tacos", a word lifted from an option, a dictated sentence or a reply that skips questions all count: map what you can, take the default for anything left out and list it under Supuestos. Never send the card back asking them to answer properly; that's the effort this skill exists to remove.
+
 After each round, reflect back in one line, no more, what you understood, with progress. It shows you listened, including how you read their metaphors, and lets them catch a wrong turn without being asked. Details belong in the spec, not here:
 
 `▰▰▱▱ Va: para tu equipo, que se use desde el cel, rápido y sin adornos (taco de esquina), sin cuentas.`
 
 ## Next-step depth
 
-1. Scan quietly, in under a minute: `git status -s`, `git log --oneline -5`, `git diff --stat`, the branch, TODO/ROADMAP/spec files. Skip generated noise: dependencies, build output, caches, lockfiles, logs. Outside a repo, look at what was touched most recently.
+1. Scan quietly, in under a minute: `git status -s`, `git log --oneline -5`, `git diff --stat`, the branch, TODO/ROADMAP/spec files, and any status or handoff note the project points to from its README, `CLAUDE.md` or `AGENTS.md` (a "next step" left by the last session is a strong hint; treat it as a lead, not an order). If `gh` or `glab` is already set up, add open PRs and the latest CI run. Skip generated noise: dependencies, build output, caches, lockfiles, logs. Outside a repo, look at what was touched most recently.
 2. If the context points somewhere (uncommitted work, a failing check, an item marked in progress), skip questions and offer 3 concrete guesses, most likely first, each citing the file or item it comes from, plus "ninguna". One task per option: bundling two ("dark mode + typo fix") forces them to type what to leave out.
 3. If it doesn't, ask one round of two questions, then guess:
    - "¿Con cuánta pila vienes?" poca / media / mucha → a 15-minute fix / a small feature / something deep.
@@ -77,6 +84,27 @@ After each round, reflect back in one line, no more, what you understood, with p
 
 If their pick turns out to be something new and fuzzy, switch to spec depth.
 
+## Decide depth
+
+People who can't choose usually already lean one way; the questions only make the lean visible. Decide fast: one round, one recommendation, and a second round only if they reject every option.
+
+1. **Set the options.** Name them back in one line, in their words, at most three. Four or more: the first question is a strike list down to two or three. None named ("ayúdame a decidir" and nothing else): infer two or three from the context and offer them as the first question, plus `otra`. Only one ("¿lo hago o no?"): the other option is not doing it, or not now.
+2. **Read before asking.** For technical options (two libraries, two approaches), read the code, CI and docs first, and put what you found in the card's first line ("vi 2 dependencias nativas y CI en node 20"). If the evidence settles it, skip the questions and recommend with the evidence. Never ask what the context answers, reversibility included: a branch is easy to undo, a sent message or a migrated database is not.
+3. **One round**, the card headed "ronda 1" with no total, the coin flip first plus one or two of the others:
+   - **Coin flip**: "Lo echamos a volado y sale A. ¿Qué sientes?" alivio / decepción / me da igual. With three options, flip for the one you think they lean toward and make the strike question the second one.
+   - **Strike one**: "Si tuvieras que tachar una ya, ¿cuál?"
+   - **Regret**: "En un mes, ¿de cuál te arrepentirías más de no haberla elegido?"
+   - **Reversibility**, only when the context can't tell: "Si sale mal, ¿se deshace?" fácil / con trabajo / no hay vuelta.
+   - **What weighs most**: two criteria taken from where the options really differ (for a shop: "que venda más" / "que no te quite las tardes"), never generic ones.
+4. **Weigh in this order**: the coin-flip reaction, then regret, then the strike. Reversibility and criteria only break ties. `ok` takes the option you would pick; `?` counts as "me da igual". If everything came back "me da igual", nothing weighs on them: pick the option that's cheapest to start and easiest to undo, and say so ("Nada te pesa: va A, que sale más barato probar").
+5. **Recommend in one line**, with the reason taken from their answers, not from your own pros and cons: "Va B: te dio alivio que saliera y te arrepentirías de no elegirla." Options: `Dale` · `No, ¿cuál?` (or `No, la otra` with two options) · `Ninguna me late`.
+6. **Then act.**
+   - `Dale` on something concrete you can do here: start, and verify as usual. If it's large (a migration, a rewrite), do the smallest step that's easy to undo first, on its own branch, and say what comes next.
+   - `Dale` on something big or fuzzy ("abrir la tienda en línea"): go straight to spec depth, round 1, skipping what this round already answered.
+   - `Dale` on keeping things as they are: say so in one line; if there's work in progress here, offer the next-step guesses for it, otherwise stop.
+   - `No, la otra`: that was the answer; go with it, no questions. `No, ¿cuál?`: one tap between the ones left, then go.
+   - `Ninguna me late`: there's a hidden option. Ask "¿Qué tienen las que quedan que no te late?" with options drawn from what they share, then propose a third option built to avoid it.
+
 ## Spec depth
 
 **Round 1.** Start from this skeleton and adapt the options to their context instead of reinventing it:
@@ -85,6 +113,8 @@ If their pick turns out to be something new and fuzzy, switch to spec depth.
 2. The miracle question: the core outcome.
 3. The worst case: "¿Qué te chocaría más?".
 4. One decontextualized question for size or feel (`references/question-bank.md` has tested ones).
+
+**Guess as early as you can.** After every round, check what's still open. If only reversible decisions remain, stop asking and guess, even after round 1. A guess that is mostly right and arrives fast beats a perfect one after another round; `Casi` fixes the rest.
 
 **Round 2.** Shape what round 1 revealed, choosing what's still open:
 
