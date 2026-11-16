@@ -2,7 +2,7 @@
 
 <img src="assets/banner-en.jpg" alt="akinator — Zero-cognitive-load mind-reading decision engine for AI assistants" width="100%">
 
-Stop fighting prompt paralysis. When you are tired, overwhelmed, or have zero energy to type, Akinator reads your codebase context, asks ultra-easy one-tap questions, turns fuzzy ideas into clean specs via negativa, and executes immediately.
+Stop fighting prompt paralysis. When you are tired, overwhelmed, or have zero energy to type, Akinator reads your codebase context, asks ultra-easy one-tap questions, turns fuzzy ideas into clean specs via negativa, and builds once you say go.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-black)](https://code.claude.com/docs)
@@ -12,6 +12,12 @@ Stop fighting prompt paralysis. When you are tired, overwhelmed, or have zero en
 English · [Español](README.es.md) · [中文](README.zh-CN.md)
 
 </div>
+
+<p align="center">
+  <img src="docs/media/session.gif" alt="A terminal session: two rounds of one-tap questions about a running-club idea, then the guess and the headings of the spec file it wrote" width="100%">
+  <br>
+  <sub>A real run of the skill in Antigravity (<code>agy</code>): two rounds of questions, then the guess and the spec it wrote. Model waits are cut; markdown is shown as plain text. The last command lists the headings of that spec file.</sub>
+</p>
 
 ---
 
@@ -31,8 +37,8 @@ When you give a standard AI assistant a vague prompt like *"what should I do?"* 
 
 ### 1. Next-Step Depth (Inside a Repo)
 When you have an existing codebase or work in progress:
-- **Quiet context scan (<1 min):** Reads `git status -s`, `git log -5`, uncommitted diffs, and project trackers (`TODO.md`, `ROADMAP.md`). Drops all cache, build, and temporary noise.
-- **Immediate concrete hypotheses:** If context points somewhere (a failing test, uncommitted WIP), it skips questions and offers 3 concrete guesses with exact file citations, most likely first, plus "none".
+- **Quiet context scan:** Reads `git status -s`, `git log -5`, uncommitted diffs, and project trackers (`TODO.md`, `ROADMAP.md`). Drops all cache, build, and temporary noise.
+- **Immediate concrete hypotheses:** If context points somewhere (a failing test, uncommitted WIP), it skips questions and offers 3 concrete guesses, each citing the file or item it comes from, most likely first, plus "none".
 - **Zero-context battery check:** If the repo has no WIP, it asks one round of 2 easy questions:
   - *"How much energy do you have?"* (low / medium / high → 15-min fix / small feature / deep task).
   - *"What are you in the mood for?"* (something visible / under the hood / clean and organize).
@@ -41,7 +47,7 @@ When you have an existing codebase or work in progress:
 ### 2. Spec Depth (From a Fuzzy Idea)
 When you want to build something new but don't know where to start:
 - **Via Negativa First:** Asks what to discard or strike before defining what to build. What would annoy you most? What is out of scope?
-- **One-Tap Running-Letter Cards:** Questions never require open-ended text. Options use continuous letters across questions (`a–c`, `d–f`, `g–i`, `j–l`) so a reply like `b f i j` is parsed with 100% precision.
+- **One-Tap Running-Letter Cards:** Questions never require open-ended text. Options use continuous letters across questions (`a–c`, `d–f`, `g–i`, `j–l`) so a reply like `b f i j` maps to one option per question.
 - **Everyday Metaphors translated into Rules:** *"If it were food: street taco, lunch special, or tasting menu?"* Every metaphor translates directly into concrete design rules (e.g. street taco = scrappy, fast, zero fluff).
 - **Therapist Reflection:** After each round, reflects back what it understood in a single line with a progress bar.
 - **Spec Delivered with the Guess:** Delivers the guess alongside a complete, buildable specification (`specs/<slug>.md`) covering:
@@ -53,7 +59,7 @@ When you want to build something new but don't know where to start:
 
 ---
 
-## 🎨 The One-Tap Experience
+## The One-Tap Experience
 
 Questions arrive in a clean card answered with single letters on one line:
 
@@ -90,7 +96,7 @@ a) Yes, start building · b) Yes, just the spec · c) Close · d) Cold
 
 | Dimension | Akinator v2 | Vanilla Assistant | Manual Prompting |
 |---|---|---|---|
-| **Cognitive Effort** | **Zero (one line of letters)** | High (reading essays & open questions) | Maximum (writing 500-word prompts) |
+| **Cognitive Effort** | **One line of letters** | High (reading essays & open questions) | Maximum (writing 500-word prompts) |
 | **Response Friction** | Single letters (`a d g j` or `ok`) | Multi-paragraph back-and-forth | Long prompt formulation |
 | **Disambiguation** | Continuous letters (`a–c`, `d–f`...) | Positional guesswork | Manual reiteration |
 | **Output Quality** | Complete spec with non-goals & risks | Vague suggestions | Dependent on prompt quality |

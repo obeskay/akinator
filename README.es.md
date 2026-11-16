@@ -2,7 +2,7 @@
 
 <img src="assets/banner-es.jpg" alt="akinator — Motor de lectura de mente y cero carga cognitiva para asistentes de código" width="100%">
 
-Deja de pelear con la parálisis del prompt. Cuando estés cansado, saturado o no tengas ganas de escribir ("hueva"), Akinator lee el contexto de tu repositorio, hace preguntas de un solo toque, convierte ideas vagas en specs completos vía negativa, y ejecuta de inmediato.
+Deja de pelear con la parálisis del prompt. Cuando estés cansado, saturado o no tengas ganas de escribir ("hueva"), Akinator lee el contexto de tu repositorio, hace preguntas de un solo toque, convierte ideas vagas en specs completos vía negativa, y construye cuando le das luz verde.
 
 [![Licencia: MIT](https://img.shields.io/badge/Licencia-MIT-black.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-black)](https://code.claude.com/docs)
@@ -12,6 +12,12 @@ Deja de pelear con la parálisis del prompt. Cuando estés cansado, saturado o n
 [English](README.md) · Español · [中文](README.zh-CN.md)
 
 </div>
+
+<p align="center">
+  <img src="docs/media/session.gif" alt="Una sesión en terminal: dos rondas de preguntas de un toque sobre una idea para un club de corredores, luego la adivinanza y los encabezados del spec que escribió" width="100%">
+  <br>
+  <sub>Una ejecución real del skill en Antigravity (<code>agy</code>): dos rondas de preguntas, luego la adivinanza y el spec que escribió. Las esperas del modelo están recortadas; el markdown se muestra como texto plano. El último comando lista los encabezados de ese spec.</sub>
+</p>
 
 ---
 
@@ -31,8 +37,8 @@ Cuando le das a un asistente de IA estándar un comando vago como *"¿qué hago 
 
 ### 1. Siguiente Paso (Dentro de un repositorio existente)
 Para cuando ya hay código o tareas en progreso:
-- **Escaneo silencioso (<1 min):** Lee `git status -s`, `git log -5`, diffs sin commitear y archivos de pendientes (`TODO.md`, `ROADMAP.md`). Descarta automáticamente ruido de build, dependencias y caches.
-- **Hipótesis concretas sin rodeos:** Si el contexto apunta a algo claro (un test que truena, trabajo a medias), se salta las preguntas y ofrece 3 opciones concretas con archivo y línea, la más probable primero, más "ninguna".
+- **Escaneo silencioso:** Lee `git status -s`, `git log -5`, diffs sin commitear y archivos de pendientes (`TODO.md`, `ROADMAP.md`). Descarta automáticamente ruido de build, dependencias y caches.
+- **Hipótesis concretas sin rodeos:** Si el contexto apunta a algo claro (un test que truena, trabajo a medias), se salta las preguntas y ofrece 3 opciones concretas, cada una con el archivo o pendiente de donde sale, la más probable primero, más "ninguna".
 - **Pregunta de energía si el repo está limpio:** Si no hay nada a medias, hace una sola ronda de dos preguntas fáciles:
   - *"¿Con cuánta pila vienes?"* (poca / media / mucha → fix de 15 min / feature chica / algo profundo).
   - *"¿Qué se te antoja?"* (algo que se vea / algo por dentro / ordenar y limpiar).
@@ -53,7 +59,7 @@ Para cuando quieres construir algo nuevo pero no sabes exactamente qué:
 
 ---
 
-## 🎨 La experiencia de un toque
+## La experiencia de un toque
 
 Las preguntas llegan en tarjetas limpias que se responden con letras en una sola línea:
 
@@ -90,7 +96,7 @@ a) Sí, arranca · b) Sí, solo el spec · c) Casi · d) Frío
 
 | Dimensión | Akinator v2 | Asistente Estándar | Prompting Manual |
 |---|---|---|---|
-| **Carga cognitiva** | **Cero (una línea de letras o un clic)** | Alta (leer parrafadas y preguntas abiertas) | Máxima (redactar 500 palabras) |
+| **Carga cognitiva** | **Una línea de letras o un clic** | Alta (leer parrafadas y preguntas abiertas) | Máxima (redactar 500 palabras) |
 | **Fricción de respuesta** | Letras simples (`a d g j` u `ok`) | Múltiples párrafos de ida y vuelta | Redacción exhaustiva |
 | **Desambiguación** | Letras corridas (`a–c`, `d–f`...) | Conjeturas posicionales propensas a error | Reiteración manual |
 | **Calidad de entrega** | Spec ejecutable con descartes y riesgos | Ideas sueltas y planes a medias | Dependiente del prompt inicial |

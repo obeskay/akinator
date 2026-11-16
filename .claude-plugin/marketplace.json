@@ -5,14 +5,14 @@
     "url": "https://github.com/obeskay"
   },
   "metadata": {
-    "description": "Zero-cognitive-load mind-reading decision engine for AI coding assistants",
+    "description": "One-tap questions for AI coding assistants when you are tired or stuck",
     "version": "2.0.0"
   },
   "plugins": [
     {
       "name": "akinator",
       "source": "./",
-      "description": "Zero-cognitive-load mind-reading decision engine for AI coding assistants. Reads your context, asks one-tap questions, turns fuzzy ideas into buildable specs via negativa, and executes immediately.",
+      "description": "One-tap questions for AI coding assistants when you are tired or stuck. Reads your context, then guesses the next step or turns a fuzzy idea into a buildable spec via negativa, and builds it once you say go.",
       "version": "2.0.0",
       "author": {
         "name": "obeskay",
